@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" --version)",
+      "Bash(\"/c/Users/rafae/AppData/Roaming/nvm/current/npm\" --version)",
+      "Bash(cmd.exe /c \"npm --version\")",
+      "Bash(cmd.exe *)",
+      "PowerShell(npm *)",
+      "Bash(npm run *)",
+      "Bash(curl *)"
+    ]
+  }
+}

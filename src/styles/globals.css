@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0a0e14;
+    --fg: #c9d1d9;
+    --success: #39ff14;
+    --error: #ff4d4d;
+    --warning: #f0b74a;
+    --surface: #141a23;
+    --border: #1e2a38;
+    --muted: #546074;
+  }
+
+  html,
+  body {
+    @apply bg-bg text-fg font-mono;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-success ring-offset-2 ring-offset-bg;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-success text-bg font-bold px-6 py-3 rounded-md
+      hover:brightness-110 active:scale-95 transition-all
+      focus-visible:ring-2 focus-visible:ring-offset-2;
+    min-height: 44px;
+  }
+
+  .btn-ghost {
+    @apply border border-border text-fg px-6 py-3 rounded-md
+      hover:bg-surface active:scale-95 transition-all;
+    min-height: 44px;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-lg p-6;
+  }
+
+  .terminal-prompt::before {
+    content: '$ ';
+    @apply text-success;
+  }
+}
