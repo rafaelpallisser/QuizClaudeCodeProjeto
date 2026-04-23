@@ -95,6 +95,16 @@ export default function Home() {
           </form>
         </div>
 
+        <div className="flex justify-center mt-4">
+          <button
+            type="button"
+            className="btn-ghost font-mono text-sm"
+            onClick={() => navigate('/leaderboard')}
+          >
+            Ver Leaderboard →
+          </button>
+        </div>
+
         <p className="text-center text-muted text-xs font-mono mt-6">
           Perguntas baseadas na documentação oficial do Claude Code
         </p>
