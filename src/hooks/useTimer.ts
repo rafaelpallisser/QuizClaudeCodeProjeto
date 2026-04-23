@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-export function useTimer(seconds: number, onExpire: () => void) {
+export function useTimer(seconds: number, onExpire: () => void, resetKey?: number) {
   const [timeLeft, setTimeLeft] = useState(seconds)
   const onExpireRef = useRef(onExpire)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -31,7 +31,7 @@ export function useTimer(seconds: number, onExpire: () => void) {
       activeRef.current = false
       clearInterval(intervalRef.current!)
     }
-  }, [seconds, startInterval])
+  }, [seconds, startInterval, resetKey])
 
   const stop = useCallback(() => {
     activeRef.current = false

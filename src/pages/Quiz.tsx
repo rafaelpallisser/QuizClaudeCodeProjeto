@@ -77,7 +77,7 @@ export default function Quiz() {
     submitAnswer(answer)
   }, [ui.answered, questions, currentIndex, submitAnswer, play])
 
-  const { timeLeft, stop } = useTimer(QUESTION_SECONDS, handleExpire)
+  const { timeLeft, stop } = useTimer(QUESTION_SECONDS, handleExpire, currentIndex)
 
   useEffect(() => {
     dispatch({ type: 'RESET' })
