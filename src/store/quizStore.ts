@@ -18,6 +18,7 @@ interface QuizState {
 
   startSession: (nickname: string) => void
   submitAnswer: (answer: SessionAnswer) => void
+  advanceQuestion: () => void
   finishSession: () => void
   resetSession: () => void
   getSession: () => Session | null
@@ -55,8 +56,11 @@ export const useQuizStore = create<QuizState>((set, get) => ({
     set((state) => ({
       answers: [...state.answers, answer],
       totalScore: state.totalScore + answer.pointsEarned,
-      currentIndex: state.currentIndex + 1,
     }))
+  },
+
+  advanceQuestion() {
+    set((state) => ({ currentIndex: state.currentIndex + 1 }))
   },
 
   finishSession() {

@@ -47,7 +47,7 @@ function quizUiReducer(state: QuizUiState, action: QuizUiAction): QuizUiState {
 
 export default function Quiz() {
   const navigate = useNavigate()
-  const { status, questions, currentIndex, submitAnswer, finishSession, getSession } = useQuizStore()
+  const { status, questions, currentIndex, submitAnswer, advanceQuestion, finishSession, getSession } = useQuizStore()
   const { play } = useSoundEffect()
   const { saveSession } = useLocalHistory()
 
@@ -107,7 +107,7 @@ export default function Quiz() {
   )
 
   const handleNext = useCallback(() => {
-    const isLast = currentIndex >= questions.length - 1
+    const isLast = currentIndex === questions.length - 1
     if (isLast) {
       finishSession()
       const session = getSession()
@@ -115,8 +115,9 @@ export default function Quiz() {
       navigate('/result')
     } else {
       dispatch({ type: 'RESET' })
+      advanceQuestion()
     }
-  }, [currentIndex, questions.length, finishSession, getSession, saveSession, navigate])
+  }, [currentIndex, questions.length, advanceQuestion, finishSession, getSession, saveSession, navigate])
 
   if (!questions.length || currentIndex >= questions.length) return null
 
